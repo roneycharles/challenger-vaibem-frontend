@@ -43,10 +43,14 @@ const SignIn: React.FC = () => {
           password: data.password,
         });
 
-        await api.post('/sessions', {
+
+
+        const response = await api.post('/sessions', {
           email: data.email,
           password: data.password,
         });
+
+        localStorage.setItem('key', response.data.token)
 
         history.push('/dashboard');
       } catch (err) {

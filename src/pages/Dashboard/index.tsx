@@ -61,14 +61,7 @@ const Dashboard: React.FC = () => {
           abortEarly: false,
         });
 
-        await api.post('/users', {
-          title: data.title,
-          description: data.description,
-          type: data.type,
-          delivery_date: data.delivery_date
-        });
-
-        history.push('/');
+        await api.post('/tasks', data, {headers: {"authorization": localStorage.getItem('key')}});
 
         addToast({
           type: 'success',
@@ -89,7 +82,7 @@ const Dashboard: React.FC = () => {
         });
       }
     },
-    [addToast, history],
+    [addToast],
   );
   return (
     <>
@@ -183,14 +176,6 @@ const Dashboard: React.FC = () => {
                 }
               ></button>
             </Card>
-            <Card>Tarefa Teste</Card>
-            <Card>Tarefa Teste</Card>
-            <Card>Tarefa Teste</Card>
-            <Card>Tarefa Teste</Card>
-            <Card>Tarefa Teste</Card>
-            <Card>Tarefa Teste</Card>
-            <Card>Tarefa Teste</Card>
-            <Card>Tarefa Teste</Card>
           </ListTask>
           <ListTask>
             <Card>Tarefa Teste</Card>
